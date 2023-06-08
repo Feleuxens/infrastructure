@@ -15,6 +15,6 @@ terraform {
     unlock_address = "https://api.tfstate.dev/github/v1/lock"
     lock_method    = "PUT"
     unlock_method  = "DELETE"
-    username       = "feleuxens/feleuxens.de-prod-tfstate"
+    username       = "feleuxens/cerium-prod-tfstate"
   }
 }
