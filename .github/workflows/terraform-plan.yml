@@ -5,6 +5,7 @@ on:
 
 env:
   TF_HTTP_PASSWORD: "${{ secrets.FELEUXENS_DE_PROD_STATE_TOKEN }}"
+  DIR: ./environment/cerium
 
 jobs:
   terraform:
@@ -19,15 +20,19 @@ jobs:
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
+        working-directory: "${ env.DIR }"
       
       - name: Terraform Init
         id: init
         run: terraform init
+        working-directory: "${ env.DIR }"
       
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
+        working-directory: "${ env.DIR }"
       
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
+        working-directory: "${ env.DIR }"
