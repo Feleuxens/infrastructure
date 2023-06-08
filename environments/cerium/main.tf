@@ -1,0 +1,4 @@
+locals {
+  domain = "feleuxens.de"
+}
+
