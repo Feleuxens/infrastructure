@@ -5,7 +5,7 @@ on:
 
 env:
   TF_HTTP_PASSWORD: "${{ secrets.FELEUXENS_DE_PROD_STATE_TOKEN }}"
-  DIR: ./environment/cerium
+  DIR: ./environments/cerium
 
 jobs:
   terraform:
