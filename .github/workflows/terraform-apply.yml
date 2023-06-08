@@ -21,19 +21,19 @@ jobs:
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
-        working-directory: "${ env.DIR }"
+        working-directory: "${{ env.DIR }}"
       
       - name: Terraform Init
         id: init
         run: terraform init
-        working-directory: "${ env.DIR }"
+        working-directory: "${{ env.DIR }}"
       
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-        working-directory: "${ env.DIR }"
+        working-directory: "${{ env.DIR }}"
       
       - name: Terraform Apply
         id: apply
         run: terraform apply -no-color
-        working-directory: "${ env.DIR }"
+        working-directory: "${{ env.DIR }}"
