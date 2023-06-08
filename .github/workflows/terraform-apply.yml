@@ -6,8 +6,12 @@ on:
       - main
 
 env:
-  TF_HTTP_PASSWORD: "${{ secrets.FELEUXENS_DE_PROD_STATE_TOKEN }}"
+  TF_HTTP_PASSWORD: "${{ secrets.CERIUM_PROD_STATE_TOKEN }}"
   DIR: ./environments/cerium
+  TF_VAR_cerium_host: ${{ vars.CERIUM_HOST }}
+  TF_VAR_cerium_client_cert: ${{ secrets.CERIUM_CLIENT_CERT }}
+  TF_VAR_cerium_client_key: ${{ secrets.CERIUM_CLIENT_KEY }}
+  TF_VAR_cerium_cluster_ca_cert: ${{ secrets.CERIUM_CLUSTER_CA_CERT }}
 
 jobs:
   terraform:
