@@ -43,5 +43,5 @@ jobs:
       
       - name: Terraform Apply
         id: apply
-        run: terraform apply -no-color
+        run: terraform apply -auto-approve
         working-directory: "${{ env.DIR }}"
