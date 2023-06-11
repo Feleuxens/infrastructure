@@ -1,0 +1,14 @@
+# This file has to be copied /var/lib/rancher/k3s/server/manifests
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    ports:
+      websecure:
+        tls:
+          enabled: true
+      web:
+        redirectTo: websecure

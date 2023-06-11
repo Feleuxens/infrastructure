@@ -21,3 +21,25 @@ variable "cerium_cluster_ca_cert" {
   type        = string
   default     = ""
 }
+
+variable "feleuxens_cf_account" {
+  description = "CF Account email address"
+  type = string
+  default = ""
+}
+
+variable "feleuxens_cf_key" {
+  description = "CF API Key"
+  type = string
+  default = ""
+}
+
+variable "feleuxens_firefly_app_key" {
+  description = "Firefly App Key"
+  type = string
+}
+
+variable "feleuxens_firefly_pgadmin4_password" {
+  description = "pgadmin4 for Firefly password"
+  type = string
+}
