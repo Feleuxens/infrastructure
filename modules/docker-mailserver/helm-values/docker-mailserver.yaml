@@ -1,0 +1,34 @@
+image:
+  tag: "12.1.0"
+
+ssl:
+  useExisting: true
+  existingName: mail-tls
+
+demoMode:
+  enabled: false
+
+domains:
+  - ${domain}
+
+pod:
+  dockermailserver:
+    override_hostname: mail.${domain}
+    ssl_type: manual
+
+rainloop:
+  enabled: true
+  ingress:
+    hosts:
+      - rainloop.${domain}
+    annotations:
+      cert-manager.io/cluster-issuer: letsencrypt-prod-dns01
+      kubernetes.io/ingress.class: traefik
+    path: /
+    tls:
+      - secretName: rainloop-tls
+        hosts:
+          - rainloop.${domain}
+
+haproxy:
+  enabled: false

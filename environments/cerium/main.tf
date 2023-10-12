@@ -16,3 +16,8 @@ module "firefly" {
   firefly-app-key   = var.feleuxens_firefly_app_key
   pgadmin4-password = var.feleuxens_firefly_pgadmin4_password
 }
+
+module "docker-mailserver" {
+  source            = "../../modules/docker-mailserver"
+  domain            = local.domain
+}
