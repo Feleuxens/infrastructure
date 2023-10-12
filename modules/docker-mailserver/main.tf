@@ -3,7 +3,7 @@ resource "helm_release" "docker-mailserver" {
 
   repository       = "https://webofmars.github.io/docker-mailserver-helm"
   chart            = "docker-mailserver"
-  version          = "2.1.2"
+  version          = "2.0.1"
   create_namespace = true
   namespace        = "docker-mailserver"
 
