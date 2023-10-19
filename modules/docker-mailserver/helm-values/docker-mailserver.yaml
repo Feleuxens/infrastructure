@@ -21,6 +21,7 @@ rainloop:
   ingress:
     hosts:
       - rainloop.${domain}
+      - mail.${domain}
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-prod-dns01
       kubernetes.io/ingress.class: traefik
@@ -29,6 +30,7 @@ rainloop:
       - secretName: rainloop-tls
         hosts:
           - rainloop.${domain}
+          - mail.${domain}
 
 haproxy:
   enabled: false
