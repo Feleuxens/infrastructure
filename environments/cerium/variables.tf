@@ -43,3 +43,8 @@ variable "feleuxens_firefly_pgadmin4_password" {
   description = "pgadmin4 for Firefly password"
   type        = string
 }
+
+variable "feleuxens_grafana_admin_password" {
+  description = "Admin password for grafana"
+  type        = string
+}

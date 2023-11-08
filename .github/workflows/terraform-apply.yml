@@ -16,6 +16,7 @@ env:
   TF_VAR_feleuxens_cf_key: ${{ secrets.TF_VAR_FELEUXENS_CF_KEY }}
   TF_VAR_feleuxens_firefly_app_key: ${{ secrets.TF_VAR_FELEUXENS_FIREFLY_APP_KEY }}
   TF_VAR_feleuxens_firefly_pgadmin4_password: ${{ secrets.TF_VAR_FELEUXENS_FIREFLY_PGADMIN4_PASSWORD }}
+  TF_VAR_feleuxens_grafana_admin_password: ${{ secrets.TF_VAR_FELEUXENS_GRAFANA_ADMIN_PASSWORD }}
 
 jobs:
   terraform:

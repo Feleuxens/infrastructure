@@ -18,6 +18,12 @@ module "firefly" {
 }
 
 module "docker-mailserver" {
-  source            = "../../modules/docker-mailserver"
-  domain            = local.domain
+  source = "../../modules/docker-mailserver"
+  domain = local.domain
+}
+
+module "kube-prometheus-stack" {
+  source                 = "../../modules/kube-prometheus-stack"
+  domain                 = local.domain
+  grafana-admin-password = var.feleuxens_grafana_admin_password
 }
