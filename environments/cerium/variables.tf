@@ -45,6 +45,21 @@ variable "feleuxens_firefly_pgadmin4_password" {
 }
 
 variable "feleuxens_grafana_admin_password" {
-  description = "Admin password for grafana"
+  description = "Admin password for Grafana"
   type        = string
+}
+
+variable "feleuxens_keycloak_admin_password" {
+  description = "Admin password for Keycloak"
+  type        = string
+}
+
+variable "feleuxens_keycloak_postgres_user_password" {
+  description = "User password for the Keycloak Postgres instance"
+  type = string
+}
+
+variable "feleuxens_keycloak_postgres_root_password" {
+  description = "Root password for the Keycloak Postgres instance"
+  type = string
 }

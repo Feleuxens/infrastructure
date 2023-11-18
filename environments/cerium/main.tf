@@ -26,4 +26,14 @@ module "kube-prometheus-stack" {
   source                 = "../../modules/kube-prometheus-stack"
   domain                 = local.domain
   grafana-admin-password = var.feleuxens_grafana_admin_password
+  #  iot_dashboards_enabled = true
+  #  iot_scraping_enabled   = true
+}
+
+module "keycloak" {
+  source                  = "../../modules/keycloak"
+  domain                  = local.domain
+  keycloak-admin-password = var.feleuxens_keycloak_admin_password
+  postgres-root-password = var.feleuxens_keycloak_postgres_root_password
+  postgres-user-password = var.feleuxens_keycloak_postgres_user_password
 }
