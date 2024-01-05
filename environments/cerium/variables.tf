@@ -56,10 +56,10 @@ variable "feleuxens_keycloak_admin_password" {
 
 variable "feleuxens_keycloak_postgres_user_password" {
   description = "User password for the Keycloak Postgres instance"
-  type = string
+  type        = string
 }
 
 variable "feleuxens_keycloak_postgres_root_password" {
   description = "Root password for the Keycloak Postgres instance"
-  type = string
+  type        = string
 }

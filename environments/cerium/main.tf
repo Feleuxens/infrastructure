@@ -34,6 +34,6 @@ module "keycloak" {
   source                  = "../../modules/keycloak"
   domain                  = local.domain
   keycloak-admin-password = var.feleuxens_keycloak_admin_password
-  postgres-root-password = var.feleuxens_keycloak_postgres_root_password
-  postgres-user-password = var.feleuxens_keycloak_postgres_user_password
+  postgres-root-password  = var.feleuxens_keycloak_postgres_root_password
+  postgres-user-password  = var.feleuxens_keycloak_postgres_user_password
 }
