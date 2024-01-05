@@ -1,4 +1,4 @@
-[![Terraform Apply](https://github.com/Feleuxens/infrastructure/actions/workflows/terraform-apply.yml/badge.svg)](https://github.com/Feleuxens/infrastructure/actions/workflows/terraform-apply.yml)
+[![Production](https://github.com/Feleuxens/infrastructure/actions/workflows/production.yml/badge.svg)](https://github.com/Feleuxens/infrastructure/actions/workflows/production.yml)
 
 # Infrastructure
 
