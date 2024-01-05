@@ -57,33 +57,3 @@ variable "GIT_SSH_PRIVATE_KEY_PEM" {
   sensitive = true
   type = string
 }
-
-# variable "feleuxens_firefly_app_key" {
-#   description = "Firefly App Key"
-#   type        = string
-# }
-
-# variable "feleuxens_firefly_pgadmin4_password" {
-#   description = "pgadmin4 for Firefly password"
-#   type        = string
-# }
-
-# variable "feleuxens_grafana_admin_password" {
-#   description = "Admin password for Grafana"
-#   type        = string
-# }
-
-# variable "feleuxens_keycloak_admin_password" {
-#   description = "Admin password for Keycloak"
-#   type        = string
-# }
-
-# variable "feleuxens_keycloak_postgres_user_password" {
-#   description = "User password for the Keycloak Postgres instance"
-#   type        = string
-# }
-
-# variable "feleuxens_keycloak_postgres_admin_password" {
-#   description = "Admin password for the Keycloak Postgres instance"
-#   type        = string
-# }
