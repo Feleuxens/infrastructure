@@ -1,9 +1,10 @@
 name: Production
 
 on:
+  workflow_dispatch:
   push:
     paths:
-      - environments/production
+      - environments/production/**
 
 
 jobs:
