@@ -50,10 +50,10 @@ variable "CLUSTER_TAILSCALE_OPERATOR_SECRET" {
 }
 
 variable "GIT_SSH_URL" {
-  type      = string
+  type = string
 }
 
-variable "GIT_SSH_PRIVATE_KEY_PEM" {
+variable "GIT_SSH_PRIVATE_KEY" {
   sensitive = true
-  type = string
+  type      = string
 }
