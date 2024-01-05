@@ -25,7 +25,7 @@ provider "flux" {
     url = var.GIT_SSH_URL
     ssh = {
       username    = "git"
-      private_key = var.GIT_SSH_PRIVATE_KEY_PEM
+      private_key = var.GIT_SSH_PRIVATE_KEY
     }
   }
 }
