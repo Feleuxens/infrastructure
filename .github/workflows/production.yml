@@ -10,5 +10,6 @@ on:
 jobs:
   terraform:
     uses: ./.github/workflows/terraform-apply.yml
+    environment: production
     with:
       environment: production
