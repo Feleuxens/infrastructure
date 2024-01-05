@@ -23,12 +23,12 @@ jobs:
       contents: read
     env:
       TF_HTTP_PASSWORD: ${{ secrets.TF_HTTP_PASSWORD }}
-      TF_VAR_CLUSTER_HOST: ${{ secrets.TF_VAR_CLUSTER_HOST }}
-      TF_VAR_CLUSTER_CLIENT_CERT: ${{ secrets.TF_VAR_CLUSTER_CLIENT_CERT }}
-      TF_VAR_CLUSTER_CLIENT_KEY: ${{ secrets.TF_VAR_CLUSTER_CLIENT_KEY }}
-      TF_VAR_CLUSTER_CA_CERT: ${{ secrets.TF_VAR_CLUSTER_CA_CERT }}
-      TF_VAR_DOMAIN_CF_ACCOUNT: ${{ secrets.TF_VAR_DOMAIN_CF_ACCOUNT }}
-      TF_VAR_DOMAIN_CF_KEY: ${{ secrets.TF_VAR_DOMAIN_CF_KEY }}
+      TF_VAR_CLUSTER_HOST: ${{ secrets.CLUSTER_HOST }}
+      TF_VAR_CLUSTER_CLIENT_CERT: ${{ secrets.CLUSTER_CLIENT_CERT }}
+      TF_VAR_CLUSTER_CLIENT_KEY: ${{ secrets.CLUSTER_CLIENT_KEY }}
+      TF_VAR_CLUSTER_CA_CERT: ${{ secrets.CLUSTER_CA_CERT }}
+      TF_VAR_DOMAIN_CF_ACCOUNT: ${{ secrets.DOMAIN_CF_ACCOUNT }}
+      TF_VAR_DOMAIN_CF_KEY: ${{ secrets.DOMAIN_CF_KEY }}
     steps:
       - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
