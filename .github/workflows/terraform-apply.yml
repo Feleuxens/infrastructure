@@ -1,51 +1,46 @@
 name: "Terraform Apply"
 
 on:
-  push:
-    branches:
-      - main
-
-env:
-  TF_HTTP_PASSWORD: "${{ secrets.CERIUM_PROD_STATE_TOKEN }}"
-  DIR: ./environments/cerium
-  TF_VAR_cerium_host: ${{ vars.CERIUM_HOST }}
-  TF_VAR_cerium_client_cert: ${{ secrets.CERIUM_CLIENT_CERT }}
-  TF_VAR_cerium_client_key: ${{ secrets.CERIUM_CLIENT_KEY }}
-  TF_VAR_cerium_cluster_ca_cert: ${{ secrets.CERIUM_CLUSTER_CA_CERT }}
-  TF_VAR_feleuxens_cf_account: ${{ secrets.TF_VAR_FELEUXENS_CF_ACCOUNT }}
-  TF_VAR_feleuxens_cf_key: ${{ secrets.TF_VAR_FELEUXENS_CF_KEY }}
-  TF_VAR_feleuxens_firefly_app_key: ${{ secrets.TF_VAR_FELEUXENS_FIREFLY_APP_KEY }}
-  TF_VAR_feleuxens_firefly_pgadmin4_password: ${{ secrets.TF_VAR_FELEUXENS_FIREFLY_PGADMIN4_PASSWORD }}
-  TF_VAR_feleuxens_grafana_admin_password: ${{ secrets.TF_VAR_FELEUXENS_GRAFANA_ADMIN_PASSWORD }}
-  TF_VAR_feleuxens_keycloak_admin_password: ${{ secrets.TF_VAR_FELEUXENS_KEYCLOAK_ADMIN_PASSWORD }}
-  TF_VAR_feleuxens_keycloak_postgres_user_password: ${{ secrets.TF_VAR_FELEUXENS_KEYCLOAK_POSTGRES_USER_PASSWORD }}
-  TF_VAR_feleuxens_keycloak_postgres_root_password: ${{ secrets.TF_VAR_FELEUXENS_KEYCLOAK_POSTGRES_ROOT_PASSWORD }}
+  workflow_call:
+    inputs:
+      environment:
+        requirement: true
+        type: string
 
 jobs:
-  terraform:
+  terraform-apply:
     runs-on: ubuntu-latest
+    environment: ${{ inputs.environment }}
     permissions:
       contents: read
+    env:
+      TF_HTTP_PASSWORD: ${{ secrets.TF_HTTP_PASSWORD }}
+      TF_VAR_CLUSTER_HOST: ${{ secrets.TF_VAR_CLUSTER_HOST }}
+      TF_VAR_CLUSTER_CLIENT_CERT: ${{ secrets.TF_VAR_CLUSTER_CLIENT_CERT }}
+      TF_VAR_CLUSTER_CLIENT_KEY: ${{ secrets.TF_VAR_CLUSTER_CLIENT_KEY }}
+      TF_VAR_CLUSTER_CA_CERT: ${{ secrets.TF_VAR_CLUSTER_CA_CERT }}
+      TF_VAR_DOMAIN_CF_ACCOUNT: ${{ secrets.TF_VAR_DOMAIN_CF_ACCOUNT }}
+      TF_VAR_DOMAIN_CF_KEY: ${{ secrets.TF_VAR_DOMAIN_CF_KEY }}
     steps:
-      - uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: actions/checkout@v4
       - uses: hashicorp/setup-terraform@v3
 
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -recursive
-        working-directory: "${{ env.DIR }}"
+        working-directory: "environments/${{ inputs.environment }}"
       
       - name: Terraform Init
         id: init
         run: terraform init
-        working-directory: "${{ env.DIR }}"
+        working-directory: "environments/${{ inputs.environment }}"
       
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
-        working-directory: "${{ env.DIR }}"
+        working-directory: "environments/${{ inputs.environment }}"
       
       - name: Terraform Apply
         id: apply
         run: terraform apply -auto-approve
-        working-directory: "${{ env.DIR }}"
+        working-directory: "environments/${{ inputs.environment }}"
