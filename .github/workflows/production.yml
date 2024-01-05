@@ -1,12 +1,13 @@
+name: Production
+
 on:
   push:
     paths:
       - environments/production
 
 
-
 jobs:
   terraform:
-    uses: ./github/workflows/terraform-apply.yml@main
+    uses: ./.github/workflows/terraform-apply.yml
     with:
       environment: production
