@@ -3,9 +3,9 @@ kind: Kustomization
 resources:
   - ../base/immich
 patches:
-  - path: immich-values.yaml
+  - path: patches/immich-values.yaml
     target:
       kind: HelmRelease
-  - path: immich-values.yaml
+  - path: patches/immich-pvc.yaml
     target:
       kind: PersistentVolumeClaim

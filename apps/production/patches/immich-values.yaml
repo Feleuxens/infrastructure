@@ -21,12 +21,3 @@ spec:
             - secretName: immich-tls
               hosts:
                 - immich.feleuxens.de
----
-apiVersion: v1
-kind: PersistentVolumeClaim
-metadata:
-  name: immich-data
-spec:
-  resources:
-    requests:
-      storage: 100Gi
