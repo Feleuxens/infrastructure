@@ -4,7 +4,7 @@ locals {
 }
 
 resource "flux_bootstrap_git" "this" {
-  components_extra = []
+  components_extra = [image-reflector-controller, image-automation-controller]
   path             = "clusters/production"
 }
 
