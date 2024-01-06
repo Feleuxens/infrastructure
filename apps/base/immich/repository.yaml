@@ -4,5 +4,5 @@ metadata:
   name: immich
   namespace: immich
 spec:
-  intervaL: 10m0s
+  interval: 10m0s
   url: https://immich-app.github.io/immich-charts/
