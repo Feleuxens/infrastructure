@@ -15,7 +15,8 @@ spec:
   values:
     immich:
       persistence:
-        existingClaim: immich-data
+        library:
+          existingClaim: immich-data
     
     postgresql:
       enabled: true
