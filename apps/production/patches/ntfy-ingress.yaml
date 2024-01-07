@@ -1,0 +1,23 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-prod-dns01
+  name: ntfy-ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: ntfy.feleuxens.de
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name:  ntfy-svc
+                port:
+                  number: 80
+  tls:
+    - hosts:
+        - ntfy.feleuxens.de
+      secretName: ntfy-tls
