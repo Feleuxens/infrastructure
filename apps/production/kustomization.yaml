@@ -13,3 +13,6 @@ patches:
   - path: patches/ntfy-ingress.yaml
     target:
       kind: Ingress
+  - path: patches/ntfy-deployment.yaml
+    target:
+      kind: Deployment
