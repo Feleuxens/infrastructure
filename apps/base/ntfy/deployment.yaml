@@ -42,6 +42,9 @@ spec:
               - mountPath: /etc/ntfy/server.yml
                 subPath: server.yml
                 name: config-volume # generated vie configMapGenerator from kustomization file
+              - mountPath: "/var/lib/ntfy/user.db"
+                subPath: user.db
+                name: config-volume
               - mountPath: /var/cache/ntfy
                 name: cache-volume # cache volume mounted to persistent volume
       volumes:

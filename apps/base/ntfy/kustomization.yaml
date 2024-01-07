@@ -10,4 +10,5 @@ configMapGenerator:
     - name: server-config
       files: 
         - server.yml
+        - user.db
 namespace: ntfy

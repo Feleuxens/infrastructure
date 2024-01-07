@@ -2,4 +2,5 @@ cache-file: "/var/cache/ntfy/cache.db"
 attachment-cache-dir: "/var/cache/ntfy/attachments"
 behind-proxy: true
 enable-metrics: true
+auth-file: "/var/lib/ntfy/user.db"
 auth-default-access: "deny-all"
