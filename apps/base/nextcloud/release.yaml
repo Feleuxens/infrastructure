@@ -1,0 +1,158 @@
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: nextcloud
+  namespace: nextcloud
+spec:
+  interval: 60m0s
+  chart:
+    spec:
+      chart: nextcloud
+      sourceRef:
+        kind: HelmRepository
+        name: nextcloud
+  
+  values:
+    image:
+      # tag: 24.0.3-apache
+    ingress:
+      enabled: true
+      className: nginx
+      annotations:
+        nginx.ingress.kubernetes.io/proxy-body-size: 4G
+        cert-manager.io/cluster-issuer: letsencrypt-prod
+        # Keep this in sync with the README.md:
+        nginx.ingress.kubernetes.io/server-snippet:  |-
+          server_tokens off;
+          proxy_hide_header X-Powered-By;
+          rewrite ^/.well-known/webfinger /index.php/.well-known/webfinger last;
+          rewrite ^/.well-known/nodeinfo /index.php/.well-known/nodeinfo last;
+          rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+          rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json;
+          location = /.well-known/carddav {
+            return 301 $scheme://$host/remote.php/dav;
+          }
+          location = /.well-known/caldav {
+            return 301 $scheme://$host/remote.php/dav;
+          }
+          location = /robots.txt {
+            allow all;
+            log_not_found off;
+            access_log off;
+          }
+          location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+            deny all;
+          }
+          location ~ ^/(?:autotest|occ|issue|indie|db_|console) {
+            deny all;
+          }
+      tls:
+        - secretName: nextcloud-tls
+          hosts:
+            - nextcloud.feleuxens.de
+
+
+    # Allow configuration of lifecycle hooks
+    # ref: https://kubernetes.io/docs/tasks/configure-pod-container/attach-handler-lifecycle-event/
+    lifecycle: {}
+      # postStartCommand: []
+      # preStopCommand: []
+
+    phpClientHttpsFix:
+      enabled: false
+      protocol: https
+
+    nextcloud:
+      host: nextcloud.feleuxens.de
+      existingSecret:
+        enabled: true
+        secretName: nextcloud
+        usernameKey: nextcloud-username
+        passwordKey: nextcloud-password
+        # tokenKey: nextcloud-token
+        smtpUsernameKey: smtp-username
+        smtpPasswordKey: smtp-password
+        smtpHostKey: smtp-host
+      mail:
+        enabled: true
+        fromAddress: nextcloud
+        domain: feleuxens.de
+        smtp:
+          secure: ssl
+          port: 465
+          authtype: LOGIN
+
+    internalDatabase:
+      enabled: false
+    externalDatabase:
+      enabled: true
+      type: mysql
+
+    ##
+    ## MariaDB chart configuration
+    ## ref: https://github.com/bitnami/charts/tree/main/bitnami/mariadb
+    ##
+    mariadb:
+      enabled: true
+
+      auth:
+        database: nextcloud
+        username: nextcloud
+        existingSecret: "nextcloud-db-secret"
+
+      architecture: standalone
+
+      ## Enable persistence using Persistent Volume Claims
+      ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+      ##
+      primary:
+        persistence:
+          enabled: true
+          # storageClass: ""
+          accessMode: ReadWriteOnce
+          size: 8Gi
+
+    redis:
+      enabled: true
+      auth:
+        enabled: false
+  
+    cronjob:
+      enabled: true
+
+    persistence:
+      # Nextcloud Data (/var/www/html)
+      enabled: true
+      ## nextcloud data Persistent Volume Storage Class
+      ## If defined, storageClassName: <storageClass>
+      ## If set to "-", storageClassName: "", which disables dynamic provisioning
+      ## If undefined (the default) or set to null, no storageClassName spec is
+      ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
+      ##   GKE, AWS & OpenStack)
+      ##
+      # storageClass: "-"
+
+      accessMode: ReadWriteOnce
+      size: 8Gi
+
+      ## Use an additional pvc for the data directory rather than a subpath of the default PVC
+      ## Useful to store data on a different storageClass (e.g. on slower disks)
+      nextcloudData:
+        enabled: true
+        # storageClass: "-"
+        accessMode: ReadWriteOnce
+        size: 8Gi
+
+    resources: {}
+      # limits:
+      #  cpu: 100m
+      #  memory: 128Mi
+      # requests:
+      #  cpu: 100m
+      #  memory: 128Mi
+
+    hpa:
+      enabled: false
+      cputhreshold: 60
+      minPods: 1
+      maxPods: 10

@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - ../base/immich
   - ../base/ntfy
+  - ../base/nextcloud
 patches:
   - path: patches/immich-values.yaml
     target:
