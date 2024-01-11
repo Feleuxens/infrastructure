@@ -8,7 +8,7 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./clusters/production
+  path: ./clusters/production/secrets
   prune: true
   decryption:
     provider: sops
