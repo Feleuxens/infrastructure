@@ -17,3 +17,6 @@ patches:
   - path: patches/ntfy-deployment.yaml
     target:
       kind: Deployment
+  - path: patches/nextcloud-values.yaml
+    target:
+      kind: HelmRelease
