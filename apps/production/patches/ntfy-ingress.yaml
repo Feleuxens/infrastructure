@@ -4,6 +4,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: letsencrypt-prod-dns01
   name: ntfy-ingress
+  namespace: ntfy
 spec:
   ingressClassName: nginx
   rules:

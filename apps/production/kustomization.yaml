@@ -8,20 +8,15 @@ patches:
   - path: patches/immich-values.yaml
     target:
       kind: HelmRelease
-      labelSelector: "app.kubernetes.io/instance=immich"
   - path: patches/immich-pvc.yaml
     target:
       kind: PersistentVolumeClaim
-      labelSelector: "app.kubernetes.io/instance=immich"
   - path: patches/ntfy-ingress.yaml
     target:
       kind: Ingress
-      labelSelector: "app.kubernetes.io/instance=ntfy"
   - path: patches/ntfy-deployment.yaml
     target:
       kind: Deployment
-      labelSelector: "app.kubernetes.io/instance=ntfy"
   - path: patches/nextcloud-values.yaml
     target:
       kind: HelmRelease
-      labelSelector: "app.kubernetes.io/instance=nextcloud"
