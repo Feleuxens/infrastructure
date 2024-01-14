@@ -87,6 +87,8 @@ spec:
     externalDatabase:
       enabled: true
       type: mysql
+      existingSecret:
+        enabled: true
 
     ##
     ## MariaDB chart configuration
