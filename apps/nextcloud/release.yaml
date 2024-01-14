@@ -98,7 +98,7 @@ spec:
       auth:
         database: nextcloud
         username: nextcloud
-        existingSecret: "nextcloud-db-secret"
+        existingSecret: "nextcloud-db"
 
       architecture: standalone
 
