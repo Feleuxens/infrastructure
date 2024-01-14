@@ -89,6 +89,9 @@ spec:
       type: mysql
       existingSecret:
         enabled: true
+        usernameKey: mariadb-username
+        passwordKey: mariadb-password
+
 
     ##
     ## MariaDB chart configuration
