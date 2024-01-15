@@ -84,6 +84,42 @@ spec:
           port: 465
           authtype: LOGIN
 
+      # PHP Configuration files
+      # Will be injected in /usr/local/etc/php/conf.d for apache image and in /usr/local/etc/php-fpm.d when nginx.enabled: true
+      phpConfigs: {}
+      # Default config files
+      # IMPORTANT: Will be used only if you put extra configs, otherwise default will come from nextcloud itself
+      # Default confgurations can be found here: https://github.com/nextcloud/docker/tree/master/16.0/apache/config
+      defaultConfigs:
+        # To protect /var/www/html/config
+        .htaccess: true
+        # Redis default configuration
+        redis.config.php: true
+        # Apache configuration for rewrite urls
+        apache-pretty-urls.config.php: true
+        # Define APCu as local cache
+        apcu.config.php: true
+        # Apps directory configs
+        apps.config.php: true
+        # Used for auto configure database
+        autoconfig.php: true
+        # SMTP default configuration
+        smtp.config.php: true
+      # Extra config files created in /var/www/html/config/
+      # ref: https://docs.nextcloud.com/server/15/admin_manual/configuration_server/config_sample_php_parameters.html#multiple-config-php-file
+      configs:
+        config.php: |-
+          <?php
+          $CONFIG = array (
+            'trusted_proxies'   => ['10.0.0.0/8'],
+            'overwritehost'     => 'nextcloud.feleuxens.de',
+            'overwriteprotocol' => 'https',
+            'overwritewebroot'  => '/nextcloud.feleuxens.de/',
+            'overwritecondaddr' => '^10\.0\.0\.1$',
+            'overwrite.cli.url' => 'https://nextcloud.feleuxens.de/,
+          );
+
+
     internalDatabase:
       enabled: false
     externalDatabase:
