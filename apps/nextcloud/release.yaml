@@ -114,7 +114,7 @@ spec:
             'trusted_proxies'   => ['10.0.0.0/8'],
             'overwritehost'     => 'nextcloud.feleuxens.de',
             'overwriteprotocol' => 'https',
-            'overwritewebroot'  => '/nextcloud.feleuxens.de/',
+            'overwritewebroot'  => '/',
             'overwritecondaddr' => '^10\.0\.0\.1$',
             'overwrite.cli.url' => 'https://nextcloud.feleuxens.de/,
           );
