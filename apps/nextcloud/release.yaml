@@ -107,12 +107,7 @@ spec:
         smtp.config.php: true
       # Extra config files created in /var/www/html/config/
       # ref: https://docs.nextcloud.com/server/15/admin_manual/configuration_server/config_sample_php_parameters.html#multiple-config-php-file
-      configs:
-        config.php: |-
-          <?php
-          $CONFIG = array (
-            'trusted_proxies'   => ['10.0.0.0/8'],
-          );
+      configs: {}
 
 
     internalDatabase:
