@@ -112,6 +112,8 @@ spec:
           <?php
           $CONFIG = array (
             'trusted_domains' => ['nextcloud.feleuxens.de'],
+            'trusted_proxies' => ['10.0.0.0/8'],
+            'overwriteprotocol' => 'https',
             'default_phone_region' => 'DE',
             'default_timezone' => 'Europe/Berlin',
             'overwrite.cli.url' => 'https://nextcloud.feleuxens.de',
