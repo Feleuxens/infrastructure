@@ -112,10 +112,6 @@ spec:
           <?php
           $CONFIG = array (
             'trusted_proxies'   => ['10.0.0.0/8'],
-            'overwritehost'     => 'nextcloud.feleuxens.de',
-            'overwriteprotocol' => 'https',
-            'overwritewebroot'  => '/',
-            'overwritecondaddr' => '^10\.0\.0\.1$',
           );
 
 
