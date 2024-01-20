@@ -17,14 +17,15 @@ module "ci-serviceaccount" {
 
 module "ingress-nginx" {
   source  = "Feleuxens/ingress-nginx/helm"
-  version = "0.1.3"
+  version = "0.1.4"
 
   enable_metrics = "true"
+  allow_snippet_annotations = "true"
 }
 
 module "cert-manager" {
   source  = "Feleuxens/cert-manager/helm"
-  version = "0.1.0"
+  version = "0.1.1"
 
   email      = local.letsencrypt-email
   cf_email   = var.DOMAIN_CF_ACCOUNT
