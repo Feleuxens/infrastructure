@@ -50,4 +50,6 @@ module "tailscale-operator" {
 
   tailscale_operator_id     = var.CLUSTER_TAILSCALE_OPERATOR_ID
   tailscale_operator_secret = var.CLUSTER_TAILSCALE_OPERATOR_SECRET
+
+  depends_on = [ module.longhorn ]
 }
