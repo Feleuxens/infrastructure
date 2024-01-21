@@ -6,6 +6,8 @@ locals {
 resource "flux_bootstrap_git" "this" {
   components_extra = ["image-reflector-controller", "image-automation-controller"]
   path             = "clusters/production"
+
+  depends_on = [ module.ingress-nginx, module.cert-manager, module.longhorn ]
 }
 
 module "ci-serviceaccount" {
