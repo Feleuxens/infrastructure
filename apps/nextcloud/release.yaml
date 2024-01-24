@@ -287,7 +287,7 @@ spec:
 
       ## Use a existing secret
       existingSecret:
-        enabled: false
+        enabled: true
         # secretName: nameofsecret
         usernameKey: mariadb-username
         passwordKey: mariadb-password
