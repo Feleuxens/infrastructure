@@ -4,7 +4,7 @@ metadata:
   name: ntfy-ingress
 spec:
   rules:
-    - host: ntfy.local
+    - host: ntfy.feleuxens.de
       http:
         paths:
           - path: /
@@ -14,3 +14,7 @@ spec:
                 name:  ntfy-svc
                 port:
                   number: 80
+  tls:
+    - hosts:
+        - ntfy.feleuxens.de
+      secretName: ntfy-tls

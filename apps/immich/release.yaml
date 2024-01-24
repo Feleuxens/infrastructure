@@ -11,6 +11,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: immich
+      version: 0.3.1
   
   values:
     immich:
@@ -31,13 +32,13 @@ spec:
             # proxy-body-size is set to 0 to remove the body limit on file uploads
             nginx.ingress.kubernetes.io/proxy-body-size: "0"
           hosts:
-            - host: immich.local
+            - host: immich.feleuxens.de
               paths:
                 - path: "/"
-          tls: []
-            # - secretName: immich-tls
-            #   hosts:
-            #     - immich.local
+          tls:
+            - secretName: immich-tls
+              hosts:
+                - immich.feleuxens.de
     
     machine-learning:
       persistence:
