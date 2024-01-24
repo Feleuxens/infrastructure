@@ -7,3 +7,4 @@ resources:
   - release.yaml
   - db-secret.yaml
   - admin-secret.yaml
+  - ingress-redirect.yaml

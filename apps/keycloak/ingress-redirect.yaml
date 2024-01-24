@@ -1,0 +1,20 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/permanent-redirect: "https://id.feleuxens.de/realms/users/account"
+  name: keycloak-redirect
+  namespace: keycloak
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: id.feleuxens.de
+    http:
+      paths:
+      - backend:
+          service:
+            name: keycloak
+            port:
+              name: http
+        path: /
+        pathType: Exact
