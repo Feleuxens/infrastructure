@@ -6,3 +6,5 @@ resources:
   - repository.yaml
   - release.yaml
   - pvc.yaml
+  - db-secret.yaml
+  - admin-secret.yaml
