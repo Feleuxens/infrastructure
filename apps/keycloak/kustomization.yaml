@@ -8,3 +8,4 @@ resources:
   - db-secret.yaml
   - admin-secret.yaml
   - ingress-redirect.yaml
+  - ingress-admin.yaml
